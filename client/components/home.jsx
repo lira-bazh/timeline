@@ -13,7 +13,6 @@ const MainPage = styled.div`
 
   height: 100vh;
 
-  background: #e5e5e5;
   font-family: 'Roboto', sans-serif;
 `
 

@@ -52,7 +52,7 @@ const TimeLine = () => {
   const weekInYear = useSelector((s) => s.weeks.weekInYear)
   const weekCount = useSelector((s) => s.weeks.count)
   const content = useSelector((s) => s.weeks.content)
-  const sizeBlock = 7
+  const sizeBlock = 5
   const periodTextLegend = 4
 
   return (
