@@ -1,14 +1,28 @@
 import React from 'react'
+import { Provider } from 'react-redux'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { createGlobalStyle } from 'styled-components'
+
+import store from '../redux/index.js'
+import Home from '../components/home.jsx'
+
+const GlobalStyle = createGlobalStyle`
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+`
 
 const Root = () => {
   return (
     <BrowserRouter>
+      <Provider store={store}>
+        <GlobalStyle />
       <Routes>
-        <Route path="/" element={<div>This is React Router v6!</div>} />
-        <Route path="/test" element={<div>This is TEST!</div>} />
-        <Route path="*" element={<h3>404</h3>} />
+        <Route exact path="/" element={<Home />}/>
       </Routes>
+      </Provider>
     </BrowserRouter>
   )
 }

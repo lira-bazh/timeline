@@ -1,10 +1,8 @@
 import { combineReducers } from 'redux'
-import { connectRouter } from 'connected-react-router'
-import weeks from './weeks'
+import weeks from './weeks.js'
 
-const createRootReducer = (history) =>
+const createRootReducer = () =>
   combineReducers({
-    router: connectRouter(history),
     weeks
   })
 

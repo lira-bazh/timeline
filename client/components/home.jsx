@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import BithdayForm from './birthdayForm'
+import BithdayForm from './birthdayForm.jsx'
 import TimeLine from './timeline'
 
 const MainPage = styled.div`
@@ -26,7 +26,7 @@ const Home = () => {
   return (
     <MainPage>
       <TitlePage>Визуализация длительности жизни</TitlePage>
-      <BithdayForm />
+       <BithdayForm />
       <TimeLine />
     </MainPage>
   )
