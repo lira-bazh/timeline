@@ -1,6 +1,7 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import { resolve } from 'path'
+import webpack from 'webpack'
 
 const __dirname = process.cwd()
 
@@ -37,6 +38,9 @@ const config = {
     ]
   },
 	plugins: [
+    new webpack.DefinePlugin({
+      SC_DISABLE_SPEEDY: true
+    }),
     new MiniCssExtractPlugin({
       filename: 'assets/css/style.css'
     }),

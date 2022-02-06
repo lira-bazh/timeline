@@ -10,6 +10,7 @@ specifiers:
   '@babel/preset-react': ^7.16.7
   '@babel/runtime': ^7.16.7
   '@reduxjs/toolkit': ^1.7.1
+  '@types/styled-components': ^5.1.22
   add: ^2.0.6
   babel-loader: ^8.2.3
   babel-plugin-styled-components: ^2.0.2
@@ -39,6 +40,7 @@ specifiers:
 
 dependencies:
   '@reduxjs/toolkit': 1.7.1_react-redux@7.2.6+react@17.0.2
+  '@types/styled-components': 5.1.22
   add: 2.0.6
   babel-plugin-styled-components: 2.0.2_styled-components@5.3.3
   cookie-parser: 1.4.6
@@ -1548,6 +1550,14 @@ packages:
     dependencies:
       '@types/node': 17.0.14
     dev: true
+
+  /@types/styled-components/5.1.22:
+    resolution: {integrity: sha512-zQzf/0aGtgFDjB942f8IaKA6UilFziDza9wXkAX5mpiSWA/FBZBU6yUavvczulTvoR6759h6CH8HuuIcJDBgZA==}
+    dependencies:
+      '@types/hoist-non-react-statics': 3.3.1
+      '@types/react': 17.0.38
+      csstype: 3.0.10
+    dev: false
 
   /@types/ws/8.2.2:
     resolution: {integrity: sha512-NOn5eIcgWLOo6qW8AcuLZ7G8PycXu0xTxxkS6Q18VWFxgPUSOwV0pBj2a/4viNZVu25i7RIB7GttdkAIUUXOOg==}
