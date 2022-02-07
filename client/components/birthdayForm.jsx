@@ -19,6 +19,14 @@ const DateInput = styled.input`
   font-size: 1em;
 `
 
+const BtnSend = styled.button`
+margin-left: 5px;
+  width: 25px;
+  height: 25px;
+  border-radius: 1rem;
+  font-size: 1.1em;
+`
+
 const BithdayForm = () => {
   const averageAge = useSelector((s) => s.weeks.averageAge)
   const millisecondInWeek = 604800000
@@ -36,14 +44,13 @@ const BithdayForm = () => {
   const maxDate = dateToStr(curDate)
   const minDate = dateToStr(new Date(curDate.getFullYear() - averageAge, curDate.getMonth(), curDate.getDate()))
 
-  function handleKeyPress(event) {
-    if (event.key === 'Enter') {
-        dispatch(updateWeeksCount(Math.floor((+curDate - Date.parse(event.target.value))/millisecondInWeek)))
-    }
+  function sendBirthday(event) {
+    event.preventDefault()
+    dispatch(updateWeeksCount(Math.floor((+curDate - Date.parse(event.target[0].value))/millisecondInWeek)))
   }
 
   return (
-    <DateForm>
+    <DateForm onSubmit={sendBirthday}>
       <label htmlFor="birthday">
         Введите дату рождения:&nbsp;
         <DateInput
@@ -51,9 +58,9 @@ const BithdayForm = () => {
           id="birthday"
           max={maxDate}
           min={minDate}
-          onKeyPress={handleKeyPress}
         />
       </label>
+      <BtnSend type="submit">&#8250;</BtnSend>
     </DateForm>
   )
 }
