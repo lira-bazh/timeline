@@ -7,6 +7,7 @@ const DateForm = styled.form`
   background-color: #b9b9b9;
   padding: 8px;
   border-radius: 5px;
+  display: flex;
 `
 
 const DateInput = styled.input`
@@ -20,12 +21,14 @@ const DateInput = styled.input`
 `
 
 const BtnSend = styled.button`
-margin-left: 5px;
-  width: 25px;
-  height: 25px;
-  border-radius: 1rem;
+  margin-left: 5px;
+  border-radius: 5px;
+  width: 24px;
   font-size: 1.1em;
-`
+  border-width: 0px;
+  display: flex;
+  align-items: center;
+`;
 
 const BithdayForm = () => {
   const averageAge = useSelector((s) => s.weeks.averageAge)
@@ -46,23 +49,31 @@ const BithdayForm = () => {
 
   function sendBirthday(event) {
     event.preventDefault()
-    dispatch(updateWeeksCount(Math.floor((+curDate - Date.parse(event.target[0].value))/millisecondInWeek)))
+    if (event.target[0].value) {
+      dispatch(updateWeeksCount(Math.floor((+curDate - Date.parse(event.target[0].value))/millisecondInWeek)))
+    }
   }
 
   return (
     <DateForm onSubmit={sendBirthday}>
       <label htmlFor="birthday">
         Введите дату рождения:&nbsp;
-        <DateInput
-          type="date"
-          id="birthday"
-          max={maxDate}
-          min={minDate}
-        />
+        <DateInput type="date" id="birthday" max={maxDate} min={minDate} />
       </label>
-      <BtnSend type="submit">&#8250;</BtnSend>
+      <BtnSend type="submit">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="24px"
+          viewBox="0 0 24 24"
+          width="24px"
+          fill="#000000"
+        >
+          <path d="M0 0h24v24H0V0z" fill="none" />
+          <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z" />
+        </svg>
+      </BtnSend>
     </DateForm>
-  )
+  );
 }
 
 BithdayForm.propTypes = {}

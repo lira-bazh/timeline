@@ -1,6 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useSelector } from 'react-redux'
+import { select, axisBottom } from 'd3'
+
+const DEFAULT_WIDTH = 200;
+const DEFAULT_HEIGHT = 400;
+const X_MARGIN = 20
+const Y_MARGIN = 20
 
 const TimeLineBlocks = styled.div`
   ${(props) => {
@@ -20,74 +26,30 @@ const TimeLineText = styled.div`
   font-size: 0.7em;
 `
 
-const TimeLineContent = styled.div`
-  display: grid;
-  grid-template-rows: repeat(${(props) => props.weekInYear}, 1fr);
-  grid-template-columns: repeat(${(props) => props.averageAge}, 1fr);
-  gap: 2px;
-  grid-auto-flow: column;
-  margin-top: 10px;
-`
+function drawTimeline({ width, height }) {
 
-const WeekItem = styled.div`
-  background-color: ${(props) => (props.color ? 'red' : 'gray')};
-  width: ${(props) => props.sizeBlock}px;
-  height: ${(props) => props.sizeBlock}px;
-`
-
-const Legend = styled.div`
-  position: relative;
-  bottom: -${(props) => props.sizeBlock}px;
-  ${(props) => {
-    if (props.content >= 10) {
-      return `left: -${props.sizeBlock / 2}px;`
-    }
-    return ''
-  }}
-  font-size: 0.6em;
-`
+}
 
 const TimeLine = () => {
+  const [width] = useState(DEFAULT_WIDTH)
+  const [height] = useState(DEFAULT_HEIGHT)
   const averageAge = useSelector((s) => s.weeks.averageAge)
   const weekInYear = useSelector((s) => s.weeks.weekInYear)
   const weekCount = useSelector((s) => s.weeks.count)
   const content = useSelector((s) => s.weeks.content)
-  const sizeBlock = 5
-  const periodTextLegend = 4
+
+   useEffect(() => {
+     drawTimeline({ width, height });
+   }, []);
 
   return (
     <TimeLineBlocks visible={weekCount}>
-      <TimeLineText>Каждая клетка — одна неделя. В столбце 52 недели, или 1 год.</TimeLineText>
-      <TimeLineContent averageAge={averageAge} weekInYear={weekInYear}>
-        {content.map((item, index) => {
-          // console.log((index + 1) % weekInYear)
-          if (
-            (index + 1) % (weekInYear * periodTextLegend) === 0 ||
-            (index + 1) / weekInYear === 1
-          ) {
-            return (
-              <WeekItem
-                key={index}
-                color={item}
-                sizeBlock={sizeBlock}
-              >
-                <Legend sizeBlock={sizeBlock} content={(index + 1) / weekInYear}>
-                  {(index + 1) / weekInYear}
-                </Legend>
-              </WeekItem>
-            )
-          }
-          return (
-            <WeekItem
-              key={index}
-              color={item}
-              sizeBlock={sizeBlock}
-            />
-          )
-        })}
-      </TimeLineContent>
+      <TimeLineText>
+        Каждая клетка — одна неделя. В столбце 52 недели, или 1 год.
+      </TimeLineText>
+      <svg width={width} height={height} id="chart" />
     </TimeLineBlocks>
-  )
+  );
 }
 
 TimeLine.propTypes = {}

@@ -31,6 +31,7 @@
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
+    "d3": "^7.3.0",
     "express": "^4.17.2",
     "nodemon": "^2.0.15",
     "react": "^17.0.2",
@@ -39,7 +40,8 @@
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.1",
     "redux": "^4.1.2",
-    "styled-components": "^5.3.3"
+    "styled-components": "^5.3.3",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.16.12",
