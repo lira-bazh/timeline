@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
-import { updateWeeksCount } from '../redux/reducers/weeks'
+import { updateDate } from '../redux/reducers/weeks'
 
 const DateForm = styled.form`
   background-color: #b9b9b9;
@@ -32,7 +32,6 @@ const BtnSend = styled.button`
 
 const BithdayForm = () => {
   const averageAge = useSelector((s) => s.weeks.averageAge)
-  const millisecondInWeek = 604800000
   const dispatch = useDispatch()
   const curDate = new Date()
 
@@ -50,7 +49,7 @@ const BithdayForm = () => {
   function sendBirthday(event) {
     event.preventDefault()
     if (event.target[0].value) {
-      dispatch(updateWeeksCount(Math.floor((+curDate - Date.parse(event.target[0].value))/millisecondInWeek)))
+      dispatch(updateDate(new Date(event.target[0].value)))
     }
   }
 

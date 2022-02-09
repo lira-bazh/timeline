@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import BithdayForm from './birthdayForm.jsx'
+import BithdayForm from './birthdayForm'
 import TimeLine from './timeline'
 
 const MainPage = styled.div`

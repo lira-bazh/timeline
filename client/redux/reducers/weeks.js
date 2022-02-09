@@ -1,35 +1,19 @@
-const UPDATE_WEEKS_COUNT = "UPDATE_WEEKS_COUNT";
-const UPDATE_DATES = "UPDATE_DATES";
+const UPDATE_DATE = "UPDATE_DATE";
 
 const initialState = {
-  count: 0,
   averageAge: 100,
   weekInYear: 52,
-  content: [],
-  startDate: "",
-  currentDate: "",
-  endDate: "",
+  width: 300,
+  height: 400,
+  birthday: 0
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case UPDATE_WEEKS_COUNT: {
+    case UPDATE_DATE: {
       return {
         ...state,
-        count: action.weeksCount,
-        content: new Array(state.averageAge * state.weekInYear)
-          .fill(0)
-          .map((item, index) => {
-            return index < action.weeksCount ? 1 : 0;
-          }),
-      };
-    }
-    case UPDATE_DATES: {
-      return {
-        ...state,
-        startDate: action.start,
-        currentDate: action.current,
-        endDate: action.end,
+        birthday: action.date
       };
     }
     default:
@@ -37,10 +21,6 @@ export default (state = initialState, action) => {
   }
 };
 
-export function updateWeeksCount(weeksCount) {
-  return { type: UPDATE_WEEKS_COUNT, weeksCount };
-}
-
-export function updateDates(start, current, end) {
-  return { type: UPDATE_DATES, start, current, end };
+export function updateDate(date) {
+  return { type: UPDATE_DATE, date };
 }
