@@ -11,7 +11,6 @@ const MainPage = styled.div`
   justify-content: center;
   align-items: center;
 
-  height: 100vh;
 
   font-family: 'Roboto', sans-serif;
 `

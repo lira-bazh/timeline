@@ -5,7 +5,7 @@ const initialState = {
   weekInYear: 52,
   width: 300,
   height: 400,
-  birthday: 0
+  birthday: 0,
 };
 
 export default (state = initialState, action) => {
@@ -13,7 +13,7 @@ export default (state = initialState, action) => {
     case UPDATE_DATE: {
       return {
         ...state,
-        birthday: action.date
+        birthday: action.date,
       };
     }
     default:
