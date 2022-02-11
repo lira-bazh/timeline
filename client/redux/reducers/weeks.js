@@ -1,10 +1,10 @@
 const UPDATE_DATE = "UPDATE_DATE";
 
 const initialState = {
-  averageAge: 100,
+  averageAge: 80,
   weekInYear: 52,
-  width: 300,
-  height: 400,
+  width: 400,
+  height: 700,
   birthday: 0,
 };
 
