@@ -1,7 +1,14 @@
 import React from 'react'
+import styled from 'styled-components'
 import { useSelector } from 'react-redux'
 import { select, axisLeft, scaleLinear } from 'd3'
 import getArrayWeeks from '../functions'
+
+const SvgBlock = styled.svg`
+  ${
+    props => !props.visible ?'display: none':''
+  }
+`
 
 const MARGIN_X = 50;
 const MARGIN_Y = 50;
@@ -38,9 +45,12 @@ const Graph = () => {
     if (startDate !== 0) {
       const axisY = axisLeft().scale(axisTime).ticks(10);
 
+      select("#chart").selectAll(".axis-y").call(axisY)
+
       select("#chart")
         .append("g")
         .attr("transform", `translate(${MARGIN_X * 0.5}, 0)`)
+        .attr('class', 'axis-y')
         .call(axisY);
 
       const selectionRect = select("#chart").selectAll("rect").data(arrWeeks);
@@ -62,7 +72,7 @@ const Graph = () => {
 
   return (
     <div>
-      <svg width={width} height={height} id="chart" />
+      <SvgBlock visible={startDate} width={width} height={height} id="chart" />
     </div>
   )
 }
