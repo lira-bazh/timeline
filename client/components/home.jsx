@@ -18,6 +18,7 @@ const MainPage = styled.div`
 
 const TitlePage = styled.div`
   font-size: 1.5em;
+  text-align: center;
   margin-bottom: 30px;
 `
 
