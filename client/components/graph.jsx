@@ -1,14 +1,7 @@
 import React from 'react'
-import styled from 'styled-components'
 import { useSelector } from 'react-redux'
 import { select, axisLeft, scaleLinear } from 'd3'
 import getArrayWeeks from '../functions'
-
-const SvgBlock = styled.svg`
-  ${
-    props => !props.visible ?'display: none':''
-  }
-`
 
 const MARGIN_X = 50;
 const MARGIN_Y = 50;
@@ -34,9 +27,9 @@ const Graph = () => {
 
   function getColor(atr) {
     if (atr > 0) {
-      return 'red'
+      return 'SeaGreen'
     }
-    return 'gray'
+    return 'Silver'
   }
   const arrWeeks = getArrayWeeks();
   console.log("arrWeeks", arrWeeks);
@@ -72,7 +65,7 @@ const Graph = () => {
 
   return (
     <div>
-      <SvgBlock visible={startDate} width={width} height={height} id="chart" />
+      <svg width={width} height={height} id="chart" />
     </div>
   )
 }
