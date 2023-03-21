@@ -1,40 +1,40 @@
-import express from 'express'
-import cors from 'cors'
-import cookieParser from 'cookie-parser'
-import { resolve } from 'path'
+import express from "express";
+import cors from "cors";
+import cookieParser from "cookie-parser";
+import { resolve } from "path";
 
-import { Html } from '../client/html.js'
+import { Html } from "../client/html.js";
 
-const server = express()
-const PORT = process.env.PORT || 8080
-const __dirname = process.cwd()
+const server = express();
+const PORT = process.env.PORT || 8080;
+const __dirname = process.cwd();
 
 const middleware = [
   cors(),
   cookieParser(),
-  express.json({ limit: '50kb' }),
-  express.static(resolve(__dirname, 'dist'))
-]
+  express.json({ limit: "50kb" }),
+  express.static("public")
+];
 
-middleware.forEach((it) => server.use(it))
+middleware.forEach((it) => server.use(it));
 
-server.get('/', (req, res) => {
-	res.send('Express server')
-})
+server.get("/", (req, res) => {
+  res.send("Express server");
+});
 
-server.get('/*', (req, res) => {
+server.get("/*", (req, res) => {
   const initialState = {
     location: req.url
-  }
+  };
 
   res.send(
     Html({
-      body: '',
+      body: "",
       initialState
     })
-  )
-})
+  );
+});
 
 server.listen(PORT, () => {
-	console.log(`Serving at http://localhost:${PORT}`)
-})
+  // console.log(`Serving at http://localhost:${PORT}`)
+});
